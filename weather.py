@@ -169,3 +169,37 @@ class WeatherApp(QWidget):
         
         # Clear the description label, as it will not be needed when there's an error
         self.description_label.clear()
+
+    def display_weather(self, data):
+        """
+        This method processes the weather data returned from the OpenWeather API,
+        calculates the temperature in Fahrenheit, retrieves the weather description and emoji, 
+        and displays them on the app's interface.
+        """
+        
+        # Set the font size for displaying the temperature to make it visually prominent
+        self.temperature_label.setStyleSheet("font-size: 75px;")
+        
+        # Extract the temperature in Kelvin from the API response
+        temperature_k = data["main"]["temp"]
+        
+        # Convert the temperature from Kelvin to Celsius (not used in this case)
+        temperature_c = temperature_k - 273.15
+        
+        # Convert the temperature from Kelvin to Fahrenheit for display
+        temperature_f = (temperature_k * 9/5) - 459.67
+        
+        # Get the weather ID (used to determine the appropriate emoji for the weather condition)
+        weather_id = data["weather"][0]["id"]
+        
+        # Get the weather description (e.g., 'clear sky', 'light rain')
+        weather_description = data["weather"][0]["description"]
+
+        # Set the temperature label text to show the temperature in Fahrenheit
+        self.temperature_label.setText(f"{temperature_f:.0f}°F")
+        
+        # Set the emoji label to display the weather emoji based on the weather ID
+        self.emoji_label.setText(self.get_weather_emoji(weather_id))
+        
+        # Set the description label to display the weather description (e.g., 'clear sky', 'rain')
+        self.description_label.setText(weather_description)
