@@ -151,3 +151,21 @@ class WeatherApp(QWidget):
         except requests.exceptions.RequestException as req_error:
             # Handle any other request-related errors
             self.display_error(f"Request Error:\n{req_error}")
+
+    def display_error(self, message):
+        """
+        This method handles the display of error messages when the weather data request fails.
+        It clears any existing weather information and shows the error message on the app interface.
+        """
+        
+        # Set the font size for the error message to make it visually clear
+        self.temperature_label.setStyleSheet("font-size: 30px;")
+        
+        # Set the error message text to the temperature label, which will be displayed to the user
+        self.temperature_label.setText(message)
+        
+        # Clear the emoji label, as it will not be needed when there's an error
+        self.emoji_label.clear()
+        
+        # Clear the description label, as it will not be needed when there's an error
+        self.description_label.clear()
