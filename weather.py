@@ -203,3 +203,55 @@ class WeatherApp(QWidget):
         
         # Set the description label to display the weather description (e.g., 'clear sky', 'rain')
         self.description_label.setText(weather_description)
+
+    @staticmethod
+    def get_weather_emoji(weather_id):
+        """
+        This static method returns a weather-related emoji based on the weather condition ID
+        obtained from the OpenWeather API. The weather ID corresponds to various weather conditions,
+        and this function maps those IDs to appropriate emojis.
+        """
+        
+        # Check if the weather ID is in the range corresponding to thunderstorms
+        if 200 <= weather_id <= 232:
+            return "⛈"  # Return thunderstorm emoji
+        
+        # Check if the weather ID is in the range corresponding to drizzle or light rain
+        elif 300 <= weather_id <= 321:
+            return "🌦"  # Return drizzle or light rain emoji
+        
+        # Check if the weather ID is in the range corresponding to moderate to heavy rain
+        elif 500 <= weather_id <= 531:
+            return "🌧"  # Return rain emoji
+        
+        # Check if the weather ID is in the range corresponding to snow
+        elif 600 <= weather_id <= 622:
+            return "❄"  # Return snowflake emoji
+        
+        # Check if the weather ID is in the range corresponding to mist, fog, or haze
+        elif 701 <= weather_id <= 741:
+            return "🌫"  # Return mist or fog emoji
+        
+        # Check if the weather ID is exactly 762, corresponding to volcanic activity
+        elif weather_id == 762:
+            return "🌋"  # Return volcano emoji
+        
+        # Check if the weather ID is exactly 771, corresponding to strong wind
+        elif weather_id == 771:
+            return "💨"  # Return wind emoji
+        
+        # Check if the weather ID is exactly 781, corresponding to a tornado
+        elif weather_id == 781:
+            return "🌪"  # Return tornado emoji
+        
+        # Check if the weather ID is exactly 800, corresponding to clear skies
+        elif weather_id == 800:
+            return "☀"  # Return sun emoji
+        
+        # Check if the weather ID is in the range corresponding to partly cloudy to overcast
+        elif 801 <= weather_id <= 804:
+            return "☁"  # Return cloud emoji
+        
+        # Return an empty string if the weather ID doesn't match any known conditions
+        else:
+            return ""
