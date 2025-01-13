@@ -86,3 +86,68 @@ class WeatherApp(QWidget):
         # Connect the "Get Weather" button to the function that fetches the weather data
         self.get_weather_button.clicked.connect(self.get_weather)
 
+    def get_weather(self):
+        """
+        This method sends a request to the OpenWeather API to fetch weather data for a given city,
+        handles any errors that may occur, and displays the weather information on the app.
+        """
+        
+        # Store the API key (ensure this is kept secure in a real-world app, do not hard-code in production)
+        api_key = "b6f45dc68e71f414f7e3954f74906379"  # Replace with your actual OpenWeather API key
+        
+        # Retrieve the city entered by the user in the input field
+        city = self.city_input.text()
+
+        # Construct the API URL using the city name and the API key
+        url = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}"
+
+        try:
+            # Send a GET request to the OpenWeather API to fetch weather data
+            response = requests.get(url)
+            
+            # Raise an exception for any HTTP error responses (4xx, 5xx)
+            response.raise_for_status()
+            
+            # Parse the JSON response from the API
+            data = response.json()
+
+            # If the request is successful (status code 200), call display_weather to show data
+            if data["cod"] == 200:
+                self.display_weather(data)
+
+        except requests.exceptions.HTTPError as http_error:
+            """
+            Handle various HTTP errors by matching the response status code and displaying a corresponding error message.
+            """
+            match response.status_code:
+                case 400:
+                    self.display_error("Bad request:\nPlease check your input")
+                case 401:
+                    self.display_error("Unauthorized:\nInvalid API key")
+                case 403:
+                    self.display_error("Forbidden:\nAccess is denied")
+                case 404:
+                    self.display_error("Not found:\nCity not found")
+                case 500:
+                    self.display_error("Internal Server Error:\nPlease try again later")
+                case 502:
+                    self.display_error("Bad Gateway:\nInvalid response from the server")
+                case 503:
+                    self.display_error("Service Unavailable:\nServer is down")
+                case 504:
+                    self.display_error("Gateway Timeout:\nNo response from the server")
+                case _:
+                    self.display_error(f"HTTP error occurred:\n{http_error}")
+
+        except requests.exceptions.ConnectionError:
+            # Handle case where the app cannot establish a connection to the API
+            self.display_error("Connection Error:\nCheck your internet connection")
+        except requests.exceptions.Timeout:
+            # Handle case where the request times out
+            self.display_error("Timeout Error:\nThe request timed out")
+        except requests.exceptions.TooManyRedirects:
+            # Handle case where there are too many redirects in the request
+            self.display_error("Too many Redirects:\nCheck the URL")
+        except requests.exceptions.RequestException as req_error:
+            # Handle any other request-related errors
+            self.display_error(f"Request Error:\n{req_error}")
