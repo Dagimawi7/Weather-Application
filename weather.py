@@ -1,15 +1,15 @@
 import sys
 import requests
-# Importing the necessary modules from PyQt5 to create a graphical user interface (GUI)
+# Importing the necessary modules from PyQt5 to create a graphical user interface 
 from PyQt5.QtWidgets import (QApplication, QWidget, QLabel, QLineEdit, QPushButton, QVBoxLayout)
 from PyQt5.QtCore import Qt
 
-# Define the WeatherApp class which inherits from QWidget (base class for GUI objects in PyQt)
+# Defining the WeatherApp class which inherits from QWidget 
 class WeatherApp(QWidget):
     def __init__(self):
         super().__init__()
         
-        # Initialize UI components (labels, input field, and button)
+        # Initialize UI components 
         self.city_label = QLabel("Enter city name: ", self)  # Label for the city input prompt
         self.city_input = QLineEdit(self)  # Input field for user to type in a city name
         self.get_weather_button = QPushButton("Get Weather", self)  # Button to fetch weather information
@@ -17,7 +17,7 @@ class WeatherApp(QWidget):
         self.emoji_label = QLabel(self)  # Label to display weather emoji
         self.description_label = QLabel(self)  # Label to display weather description
         
-        # Call the function to initialize the user interface (UI)
+        # Call the function to initializing the user interface (UI)
         self.initUI()
 
     def initUI(self):
@@ -92,8 +92,8 @@ class WeatherApp(QWidget):
         handles any errors that may occur, and displays the weather information on the app.
         """
         
-        # Store the API key (ensure this is kept secure in a real-world app, do not hard-code in production)
-        api_key = "b6f45dc68e71f414f7e3954f74906379"  # Replace with your actual OpenWeather API key
+        
+        api_key = "b6f45dc68e71f414f7e3954f74906379" 
         
         # Retrieve the city entered by the user in the input field
         city = self.city_input.text()
@@ -255,3 +255,9 @@ class WeatherApp(QWidget):
         # Return an empty string if the weather ID doesn't match any known conditions
         else:
             return ""
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    weather_app = WeatherApp()
+    weather_app.show()
+    sys.exit(app.exec_())
