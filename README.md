@@ -22,7 +22,7 @@ Clone the repository:
 
 bash
 Copy code
-git clone https://github.com/Dagimawi7/Weather-App-py.git
+git clone https://github.com/Dagimawi7/Weather-App-py.git](https://github.com/Dagimawi7/Weather-Application.git
 Navigate to the project folder:
 
 bash
