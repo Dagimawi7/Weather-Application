@@ -139,6 +139,21 @@ class WeatherApp(QWidget):
             ball.setPos(new_x, new_y)
 
     def get_weather(self):
+        """
+            Fetches real-time weather data from OpenWeatherMap API.
+
+            Includes error handling:
+            - Handles HTTP errors (e.g., 404 city not found)
+            - Handles other request exceptions (e.g., network problems)
+
+            This ensures the app doesn't crash and shows user-friendly error messages.
+
+            The project is also set up with GitHub Actions (outside this code)
+            for automated testing and Continuous Integration (CI),
+            meaning every time code is updated, tests run automatically
+            to catch errors early and keep the app stable.
+         """
+
         api_key = "b6f45dc68e71f414f7e3954f74906379"
         city = self.city_input.text()
         url = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}"
