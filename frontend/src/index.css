@@ -162,6 +162,18 @@ p {
   white-space: nowrap;
 }
 
+.btn-units:hover {
+  background: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-units:active {
+  transform: translateY(0) scale(0.95);
+}
+
 .btn-primary {
   background: var(--primary-gradient);
   color: white;
@@ -204,7 +216,8 @@ p {
 
 .input:focus {
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.15);
+  transform: scale(1.01);
 }
 
 .input::placeholder {

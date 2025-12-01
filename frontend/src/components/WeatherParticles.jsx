@@ -29,21 +29,29 @@ const WeatherParticles = ({ weatherId }) => {
 
             reset() {
                 this.x = Math.random() * canvas.width;
-                this.y = this.type === 'snow' ? -10 : Math.random() * -canvas.height;
-                this.speed = this.type === 'snow' ? Math.random() * 1 + 0.5 : Math.random() * 2 + 2;
-                this.size = this.type === 'snow' ? Math.random() * 3 + 2 : Math.random() * 2 + 1;
-                this.opacity = Math.random() * 0.5 + 0.3;
-                this.drift = this.type === 'snow' ? Math.random() * 0.5 - 0.25 : 0;
+                this.y = this.type === 'snow' ? -10 : (this.type === 'cloud' ? Math.random() * (canvas.height / 3) : Math.random() * -canvas.height);
+                this.speed = this.type === 'snow' ? Math.random() * 1 + 0.5 : (this.type === 'cloud' ? Math.random() * 0.2 + 0.1 : Math.random() * 2 + 2);
+                this.size = this.type === 'snow' ? Math.random() * 3 + 2 : (this.type === 'cloud' ? Math.random() * 60 + 40 : Math.random() * 2 + 1);
+                this.opacity = this.type === 'cloud' ? Math.random() * 0.3 + 0.1 : Math.random() * 0.5 + 0.3;
+                this.drift = this.type === 'snow' ? Math.random() * 0.5 - 0.25 : (this.type === 'cloud' ? 0.3 : 0);
             }
 
             update() {
-                this.y += this.speed;
-                this.x += this.drift;
+                if (this.type === 'cloud') {
+                    this.x += this.drift;
+                } else {
+                    this.y += this.speed;
+                    this.x += this.drift;
+                }
 
-                if (this.y > canvas.height) {
+                if (this.y > canvas.height && this.type !== 'cloud') {
                     this.reset();
                 }
-                if (this.x < 0 || this.x > canvas.width) {
+                if (this.x > canvas.width + 100) {
+                    this.x = -100;
+                } else if (this.x < -100) {
+                    this.x = canvas.width + 100;
+                } else if ((this.x < 0 || this.x > canvas.width) && this.type !== 'cloud') {
                     this.x = Math.random() * canvas.width;
                 }
             }
@@ -75,6 +83,10 @@ const WeatherParticles = ({ weatherId }) => {
             // Snow
             particleCount = 100;
             particleType = 'snow';
+        } else if (weatherId > 800) {
+            // Clouds
+            particleCount = 15;
+            particleType = 'cloud';
         }
 
         if (particleCount > 0 && particleType) {
@@ -108,7 +120,7 @@ const WeatherParticles = ({ weatherId }) => {
     }, [weatherId]);
 
     // Don't render canvas if no particles needed
-    if (!weatherId || (weatherId < 200 || weatherId >= 700)) {
+    if (!weatherId || (weatherId < 200 || (weatherId >= 700 && weatherId <= 800))) {
         return null;
     }
 

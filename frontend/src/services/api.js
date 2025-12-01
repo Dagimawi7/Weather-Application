@@ -145,6 +145,54 @@ export const getWindDirection = (degrees) => {
     return directions[index];
 };
 
+// Interpolate hourly data from 3-hour forecast
+export const interpolateHourlyData = (forecastList) => {
+    if (!forecastList || forecastList.length < 2) return forecastList;
+
+    const hourlyData = [];
+
+    for (let i = 0; i < forecastList.length - 1; i++) {
+        const current = forecastList[i];
+        const next = forecastList[i + 1];
+
+        // Add current point
+        hourlyData.push(current);
+
+        // Calculate time difference (usually 3 hours)
+        const timeDiff = next.dt - current.dt;
+        const steps = timeDiff / 3600; // number of hours
+
+        // Interpolate intermediate points
+        for (let j = 1; j < steps; j++) {
+            const fraction = j / steps;
+
+            // Linear interpolation for temp
+            const temp = current.main.temp + (next.main.temp - current.main.temp) * fraction;
+
+            // Create interpolated item
+            const interpolatedItem = {
+                ...current,
+                dt: current.dt + (j * 3600),
+                main: {
+                    ...current.main,
+                    temp: temp,
+                    feels_like: current.main.feels_like + (next.main.feels_like - current.main.feels_like) * fraction,
+                    humidity: Math.round(current.main.humidity + (next.main.humidity - current.main.humidity) * fraction)
+                },
+                // Use current weather icon for first half, next for second half
+                weather: fraction < 0.5 ? current.weather : next.weather
+            };
+
+            hourlyData.push(interpolatedItem);
+        }
+    }
+
+    // Add the last point
+    hourlyData.push(forecastList[forecastList.length - 1]);
+
+    return hourlyData;
+};
+
 // Local storage helpers
 export const storage = {
     getFavorites: () => {

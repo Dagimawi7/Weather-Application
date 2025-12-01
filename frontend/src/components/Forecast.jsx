@@ -1,4 +1,4 @@
-import { getWeatherIcon, formatTemp, formatDate } from '../services/api';
+import { getWeatherIcon, formatTemp, formatDate, interpolateHourlyData } from '../services/api';
 import './Forecast.css';
 
 const Forecast = ({ forecast, units }) => {
@@ -24,9 +24,8 @@ const Forecast = ({ forecast, units }) => {
         dailyForecasts[dateKey].items.push(item);
     });
 
-    // Get daily summaries (max 5 days)
+    // Get daily summaries (show all available days)
     const dailySummaries = Object.values(dailyForecasts)
-        .slice(0, 5)
         .map(day => ({
             date: day.date,
             weather: day.weather,
@@ -37,7 +36,7 @@ const Forecast = ({ forecast, units }) => {
 
     return (
         <div className="forecast-container">
-            <h2 className="forecast-title">5-Day Forecast</h2>
+            <h2 className="forecast-title">Extended Forecast</h2>
 
             <div className="forecast-grid">
                 {dailySummaries.map((day, index) => (
@@ -67,11 +66,11 @@ const Forecast = ({ forecast, units }) => {
                 ))}
             </div>
 
-            {/* Hourly Forecast for Today */}
+            {/* Hourly Forecast */}
             <div className="hourly-forecast">
-                <h3 className="hourly-title">Today's Hourly Forecast</h3>
+                <h3 className="hourly-title">Hourly Forecast</h3>
                 <div className="hourly-scroll">
-                    {forecast.list.slice(0, 8).map((item, index) => {
+                    {interpolateHourlyData(forecast.list).map((item, index) => {
                         const date = new Date(item.dt * 1000);
                         const hour = date.toLocaleTimeString('en-US', { hour: 'numeric', hour12: true });
 

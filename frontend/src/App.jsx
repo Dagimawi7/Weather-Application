@@ -113,10 +113,7 @@ function App() {
     <div className="app" style={{ '--dynamic-gradient': backgroundGradient }}>
       <div className="app-background"></div>
 
-      {/* Weather Particles Animation */}
-      {weather && weather.weather && (
-        <WeatherParticles weatherId={weather.weather[0].id} />
-      )}
+      {/* Weather Particles Animation Removed as per request */}
 
       <ThemeToggle />
 

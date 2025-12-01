@@ -183,11 +183,12 @@
 /* Responsive */
 @media (max-width: 768px) {
   .app {
-    padding: var(--spacing-lg) 0;
+    padding: var(--spacing-md) 0;
   }
 
   .app-header {
-    padding: var(--spacing-xl) 0;
+    padding: var(--spacing-lg) 0;
+    margin-bottom: var(--spacing-lg);
   }
 
   .app-title {
@@ -203,7 +204,8 @@
   }
 
   .search-section {
-    margin-bottom: var(--spacing-2xl);
+    margin-bottom: var(--spacing-xl);
+    padding: 0 var(--spacing-sm);
   }
 }
 

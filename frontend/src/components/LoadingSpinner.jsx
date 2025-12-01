@@ -3,9 +3,9 @@ import './LoadingSpinner.css';
 const LoadingSpinner = ({ message = 'Loading...' }) => {
     return (
         <div className="loading-container">
-            <div className="spinner-wrapper">
-                <div className="spinner"></div>
-                <div className="spinner-glow"></div>
+            <div className="weather-loader">
+                <div className="sun"></div>
+                <div className="cloud"></div>
             </div>
             <p className="loading-message">{message}</p>
         </div>

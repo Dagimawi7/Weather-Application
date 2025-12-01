@@ -23,7 +23,7 @@ const CurrentWeather = ({ weather, units }) => {
             </div>
 
             <div className="weather-details-grid">
-                <div className="detail-card glass-card">
+                <div className="detail-card glass-card" style={{ animationDelay: '0.1s' }}>
                     <div className="detail-icon">🌡️</div>
                     <div className="detail-content">
                         <div className="detail-label">Feels Like</div>
@@ -31,7 +31,7 @@ const CurrentWeather = ({ weather, units }) => {
                     </div>
                 </div>
 
-                <div className="detail-card glass-card">
+                <div className="detail-card glass-card" style={{ animationDelay: '0.2s' }}>
                     <div className="detail-icon">💧</div>
                     <div className="detail-content">
                         <div className="detail-label">Humidity</div>
@@ -39,7 +39,7 @@ const CurrentWeather = ({ weather, units }) => {
                     </div>
                 </div>
 
-                <div className="detail-card glass-card">
+                <div className="detail-card glass-card" style={{ animationDelay: '0.3s' }}>
                     <div className="detail-icon">💨</div>
                     <div className="detail-content">
                         <div className="detail-label">Wind</div>
@@ -50,7 +50,7 @@ const CurrentWeather = ({ weather, units }) => {
                     </div>
                 </div>
 
-                <div className="detail-card glass-card">
+                <div className="detail-card glass-card" style={{ animationDelay: '0.4s' }}>
                     <div className="detail-icon">🔽</div>
                     <div className="detail-content">
                         <div className="detail-label">Pressure</div>
@@ -58,7 +58,7 @@ const CurrentWeather = ({ weather, units }) => {
                     </div>
                 </div>
 
-                <div className="detail-card glass-card">
+                <div className="detail-card glass-card" style={{ animationDelay: '0.5s' }}>
                     <div className="detail-icon">👁️</div>
                     <div className="detail-content">
                         <div className="detail-label">Visibility</div>
@@ -66,7 +66,7 @@ const CurrentWeather = ({ weather, units }) => {
                     </div>
                 </div>
 
-                <div className="detail-card glass-card">
+                <div className="detail-card glass-card" style={{ animationDelay: '0.6s' }}>
                     <div className="detail-icon">☁️</div>
                     <div className="detail-content">
                         <div className="detail-label">Cloudiness</div>
