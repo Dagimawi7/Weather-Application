@@ -2,7 +2,7 @@
   min-height: 100vh;
   position: relative;
   overflow-x: hidden;
-  padding: var(--spacing-xl) 0;
+  padding: var(--spacing-md) 0;
 }
 
 .app-background {
@@ -183,7 +183,7 @@
 /* Responsive */
 @media (max-width: 768px) {
   .app {
-    padding: var(--spacing-md) 0;
+    padding: 0;
   }
 
   .app-header {
@@ -205,6 +205,10 @@
 
   .search-section {
     margin-bottom: var(--spacing-xl);
+    padding: 0 var(--spacing-sm);
+  }
+
+  .container {
     padding: 0 var(--spacing-sm);
   }
 }

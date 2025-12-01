@@ -377,9 +377,15 @@ p {
 
 /* Utility Classes */
 .container {
-  max-width: 1200px;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 0 var(--spacing-lg);
+  padding: 0 var(--spacing-xl);
+}
+
+@media (min-width: 1920px) {
+  .container {
+    max-width: 1800px;
+  }
 }
 
 .flex {
