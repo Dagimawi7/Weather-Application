@@ -1,6 +1,10 @@
 import axios from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api/weather';
+// Use deployed backend in production, localhost in development
+const API_BASE_URL = import.meta.env.VITE_API_URL ||
+    (import.meta.env.MODE === 'production'
+        ? 'https://weather-application-oyoq.onrender.com/api/weather'
+        : 'http://localhost:8000/api/weather');
 
 // API Service
 export const weatherAPI = {
