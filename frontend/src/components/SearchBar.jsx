@@ -100,7 +100,6 @@ const SearchBar = ({ onSearch, onLocationSelect }) => {
         <div className="search-bar-container" ref={searchRef}>
             <form onSubmit={handleSubmit} className="search-form">
                 <div className="search-input-wrapper">
-                    <span className="search-icon">🔍</span>
                     <input
                         type="text"
                         className="search-input"
@@ -111,11 +110,14 @@ const SearchBar = ({ onSearch, onLocationSelect }) => {
                     />
                     {isSearching && <span className="search-loading">⏳</span>}
                 </div>
-
-                <button type="button" className="btn-location" onClick={handleGetLocation} title="Use current location">
-                    📍
+                <button type="submit" className="btn-search" title="Search">
+                    🔍
                 </button>
             </form>
+
+            <button type="button" className="btn-enable-location" onClick={handleGetLocation}>
+                <span className="location-pin">📍</span> Enable Location Service
+            </button>
 
             {showSuggestions && suggestions.length > 0 && (
                 <div className="suggestions-dropdown">
