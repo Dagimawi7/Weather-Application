@@ -1,0 +1,217 @@
+.forecast-container {
+    width: 100%;
+    margin-top: var(--spacing-2xl);
+}
+
+.forecast-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-xl);
+    text-align: center;
+    color: var(--text-primary);
+}
+
+/* Daily Forecast Grid */
+.forecast-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-3xl);
+}
+
+.forecast-card {
+    text-align: center;
+    padding: var(--spacing-xl);
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.forecast-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+}
+
+.forecast-date {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-md);
+}
+
+.forecast-icon {
+    font-size: 3.5rem;
+    margin: var(--spacing-md) 0;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
+}
+
+.forecast-description {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    text-transform: capitalize;
+    margin-bottom: var(--spacing-lg);
+    min-height: 40px;
+}
+
+.forecast-temps {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-md);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--border-color);
+}
+
+.forecast-temp-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.temp-label {
+    font-size: 0.75rem;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.temp-value {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.temp-high {
+    color: var(--color-accent);
+}
+
+.temp-low {
+    color: var(--color-primary);
+}
+
+.forecast-temp-divider {
+    width: 1px;
+    height: 40px;
+    background: var(--border-color);
+}
+
+/* Hourly Forecast */
+.hourly-forecast {
+    margin-top: var(--spacing-3xl);
+}
+
+.hourly-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-lg);
+    color: var(--text-primary);
+}
+
+.hourly-scroll {
+    display: flex;
+    gap: var(--spacing-md);
+    overflow-x: auto;
+    padding-bottom: var(--spacing-md);
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+.hourly-scroll::-webkit-scrollbar {
+    height: 8px;
+}
+
+.hourly-scroll::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+    border-radius: 4px;
+}
+
+.hourly-scroll::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 4px;
+}
+
+.hourly-scroll::-webkit-scrollbar-thumb:hover {
+    background: var(--text-tertiary);
+}
+
+.hourly-item {
+    flex: 0 0 auto;
+    min-width: 100px;
+    padding: var(--spacing-lg);
+    text-align: center;
+    transition: all var(--transition-base);
+}
+
+.hourly-item:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+.hourly-time {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.hourly-icon {
+    font-size: 2.5rem;
+    margin: var(--spacing-sm) 0;
+}
+
+.hourly-temp {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.hourly-detail {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.hourly-detail-icon {
+    font-size: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .forecast-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
+    }
+
+    .forecast-card {
+        padding: var(--spacing-lg);
+    }
+
+    .forecast-icon {
+        font-size: 3rem;
+    }
+
+    .hourly-item {
+        min-width: 90px;
+        padding: var(--spacing-md);
+    }
+
+    .hourly-icon {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .forecast-title {
+        font-size: 1.5rem;
+    }
+
+    .forecast-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hourly-title {
+        font-size: 1.25rem;
+    }
+}
