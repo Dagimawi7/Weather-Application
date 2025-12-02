@@ -111,12 +111,18 @@ const SearchBar = ({ onSearch, onLocationSelect }) => {
                     {isSearching && <span className="search-loading">⏳</span>}
                 </div>
                 <button type="submit" className="btn-search" title="Search">
-                    🔍
+                    <img src="https://img.icons8.com/ios-filled/50/search--v1.png"
+                        alt="search Icon"
+                        style={{ width: '20px', height: '20px' }} />
                 </button>
             </form>
 
             <button type="button" className="btn-enable-location" onClick={handleGetLocation}>
-                <span className="location-pin">📍</span> Enable Location Service
+                <img src="https://img.icons8.com/ios-filled/50/marker--v1.png"
+                    alt="location Icon"
+                    style={{ width: '20px', height: '20px' }}
+                />
+                Enable Location Service
             </button>
 
             {showSuggestions && suggestions.length > 0 && (

@@ -22,6 +22,22 @@
     transform: translateY(0) rotate(0deg);
 }
 
+/* Dark mode glow effect */
+[data-theme="dark"] .theme-toggle {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(59, 130, 246, 0.2));
+    border-color: rgba(167, 139, 250, 0.4);
+    box-shadow: 0 4px 20px rgba(139, 92, 246, 0.3),
+        0 0 40px rgba(139, 92, 246, 0.2),
+        inset 0 0 20px rgba(167, 139, 250, 0.1);
+}
+
+[data-theme="dark"] .theme-toggle:hover {
+    box-shadow: 0 8px 30px rgba(139, 92, 246, 0.5),
+        0 0 60px rgba(139, 92, 246, 0.3),
+        inset 0 0 30px rgba(167, 139, 250, 0.2);
+    border-color: rgba(167, 139, 250, 0.6);
+}
+
 @media (max-width: 768px) {
     .theme-toggle {
         top: var(--spacing-md);

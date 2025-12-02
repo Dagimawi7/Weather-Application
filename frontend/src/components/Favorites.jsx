@@ -33,7 +33,10 @@ const Favorites = ({ onSelectCity, currentCity }) => {
                     disabled={isFavorite}
                     title={isFavorite ? 'Already in favorites' : 'Add to favorites'}
                 >
-                    {isFavorite ? '⭐' : '☆'} {isFavorite ? 'Saved' : 'Save'}
+                    <img src="https://img.icons8.com/?size=100&id=LZhC7swSWAxh&format=png&color=000000"
+                        alt="save Icon"
+                        style={{ width: '20px', height: '20px' }} />
+                    {isFavorite ? 'Saved' : 'Save'}
                 </button>
             )}
 
@@ -75,7 +78,9 @@ const Favorites = ({ onSelectCity, currentCity }) => {
                                             onClick={() => handleRemoveFavorite(city)}
                                             title="Remove from favorites"
                                         >
-                                            🗑️
+                                            <img src="https://img.icons8.com/?size=100&id=nerFBdXcYDve&format=png&color=000000"
+                                                alt="delete Icon"
+                                                style={{ width: '20px', height: '20px' }} />
                                         </button>
                                     </div>
                                 ))}

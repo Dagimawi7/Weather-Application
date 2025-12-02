@@ -44,7 +44,13 @@ const WeatherStats = ({ weather }) => {
                 </div>
 
                 <div className="stat-card glass-card">
-                    <div className="stat-icon">🌡️</div>
+                    <div className="stat-icon">
+                        <img 
+                        src="https://img.icons8.com/?size=100&id=15363&format=png&color=000000"
+                        alt="sea level icon"
+                        style={{ width: '24px', height: '24px' }}
+                        />
+                    </div>
                     <div className="stat-content">
                         <div className="stat-label">Sea Level</div>
                         <div className="stat-value">{main.sea_level || main.pressure} hPa</div>

@@ -32,7 +32,11 @@ const CurrentWeather = ({ weather, units }) => {
                 </div>
 
                 <div className="detail-card glass-card" style={{ animationDelay: '0.2s' }}>
-                    <div className="detail-icon">💧</div>
+                    <div className="detail-icon">
+                        <img src="https://img.icons8.com/?size=100&id=46608&format=png&color=000000"
+                            alt="humidity Icon"
+                            style={{ width: '24px', height: '24px' }} />
+                    </div>
                     <div className="detail-content">
                         <div className="detail-label">Humidity</div>
                         <div className="detail-value">{main.humidity}%</div>
@@ -51,7 +55,11 @@ const CurrentWeather = ({ weather, units }) => {
                 </div>
 
                 <div className="detail-card glass-card" style={{ animationDelay: '0.4s' }}>
-                    <div className="detail-icon">🔽</div>
+                    <div className="detail-icon">
+                        <img src="https://img.icons8.com/?size=100&id=15344&format=png&color=000000"
+                            alt="pressure Icon"
+                            style={{ width: '24px', height: '24px' }} />
+                    </div>
                     <div className="detail-content">
                         <div className="detail-label">Pressure</div>
                         <div className="detail-value">{main.pressure} hPa</div>
