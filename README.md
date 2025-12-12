@@ -2,7 +2,7 @@
 
 > A cool looking weather app that I built to learn React and Python.
 
-![Weather App Demo]([https://via.placeholder.com/800x400?text=Weather+App+Preview](https://weather-application-six-blush.vercel.app/))
+![Weather App Demo]([https://weather-application-six-blush.vercel.app/))
 
 ## 🚀 What is this?
 
