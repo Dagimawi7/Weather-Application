@@ -1,62 +1,62 @@
-# 🌦️ My Weather App
+# 🌦️ SkyCast | Full-Stack Weather Dashboard
 
-> A cool looking weather app that I built to learn React and Python.
+> A high-performance weather application bridging the gap between raw meteorological data and immersive UI/UX.
 
-![Weather App Demo]([https://weather-application-six-blush.vercel.app/))
+**[🔗 View Live Demo](https://weather-application-six-blush.vercel.app/)**
 
-## 🚀 What is this?
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
 
-This is a weather dashboard that shows you the current weather and forecast. I wanted to make something that didn't just show numbers, but actually looked nice and felt good to use. It changes colors based on if it's sunny, rainy, or cloudy.
+---
 
-## 💡 Cool Things I Built
+## 📖 Overview
+SkyCast is a modern weather dashboard that focuses on **data visualization** and **adaptive design**. While most weather apps provide static numbers, SkyCast uses dynamic theming and custom backend logic to create a premium, fluid user experience.
 
-### 1. Smoother Hourly Forecast
-The free weather API I used only gives data every 3 hours (like 12 PM, 3 PM, 6 PM). That looked kind of choppy.
-**How I fixed it**: I wrote a function that "guesses" the temperature for the hours in between. So if it's 20° at 12 PM and 23° at 3 PM, my code figures out it's probably 21° at 1 PM and 22° at 2 PM. Now it shows a smooth forecast for every single hour!
+---
 
-### 2. Dynamic Colors & Glass Effect
-I used something called "Glassmorphism" to make the cards look like frosted glass.
-Also, the whole app changes color based on the weather:
-- **Sunny**: Bright orange/yellow gradient.
-- **Rainy**: Blue/Green gradient.
-- **Clear Night**: Dark blue gradient.
-I used CSS variables for this so it switches instantly without reloading.
+## 🛠️ Technical Highlights
 
-### 3. Works on Mobile
-I spent a lot of time making sure it looks good on my phone too. On a computer, everything is spread out. On a phone, the boxes rearrange themselves into a neat 2x2 grid so you can see everything without zooming out.
+### 1. Data Smoothing (The "Gap-Fill" Problem)
+Free weather APIs often return data in 3-hour chunks (12 PM, 3 PM, etc.), which makes for a jagged forecast.
+* **The Engineering Fix:** I implemented a **Linear Interpolation Algorithm** in the Python backend to calculate the estimated temperature for the hours in between.
+* **Impact:** Users see a smooth, 24-hour granular forecast instead of "jumpy" data points.
 
-## 🛠️ Tools I Used
+### 2. Adaptive Glassmorphism UI
+The interface reacts in real-time to the weather data provided by the API:
+* **Sunny:** Transitions to a vibrant golden-orange gradient.
+* **Rainy/Stormy:** Shifts to deep, moody blues and greys.
+* **Dynamic Blur:** Uses CSS backdrop-filters (Glassmorphism) to ensure text remains legible regardless of the background color shift.
 
-- **Frontend**: React (to build the UI), Vite (to run it fast), and plain CSS (for the styling).
-- **Backend**: Python with FastAPI (to talk to the weather API).
+---
 
-## 🏃‍♂️ How to Run It
+## 🚀 System Architecture
 
-If you want to try it out on your computer:
+### Frontend
+- **React + Vite:** For ultra-fast HMR and optimized production builds.
+- **Tailwind CSS:** Utilizing a mobile-first grid system for 100% responsiveness.
+- **Lucide React:** For consistent, clean iconography.
 
-### 1. Start the Backend (Python)
-This gets the weather data.
+### Backend
+- **FastAPI:** Asynchronous Python framework for high-performance API routing.
+- **Uvicorn:** ASGI server implementation for lightning-fast request handling.
+- **OpenWeatherMap API:** The primary data source for global meteorological metrics.
 
+---
+
+## ⚙️ Setup & Installation
+
+### Backend
 ```bash
 cd backend
-# Install the libraries
 pip install -r requirements.txt
-
-# Run the server
 python main.py
 ```
+## 🎬 System in Action
+https://github.com/user-attachments/assets/6ac117c3-bd2d-44cd-b328-b1aa46842db3
 
-### 2. Start the Frontend (React)
-This shows the website.
 
-```bash
-cd frontend
-# Install the libraries
-npm install
 
-# Run the website
-npm run dev
-```
-
-Then open `http://localhost:5173` in your browser!
 
